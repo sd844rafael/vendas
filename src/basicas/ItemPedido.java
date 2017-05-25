@@ -5,6 +5,7 @@ public class ItemPedido {
 	private int quantidade;
 	private double precoTotal;
 	private Pedido pedido;
+	private Produto produto;
 
 	public double getPrecoUnitario() {
 		return precoUnitario;
