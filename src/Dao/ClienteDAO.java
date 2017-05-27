@@ -55,7 +55,7 @@ public class ClienteDAO {
 			
 		}public void inserir(Cliente cliente) {
 
-			String sql = "INSERT INTO produto (nome,email,senha) VALUES (?,?,?,?)";
+			String sql = "INSERT INTO produto (nome,email,senha) VALUES (?,?,?)";
 			PreparedStatement stmt;
 			try {
 				stmt = connection.prepareStatement(sql);
@@ -77,13 +77,15 @@ public class ClienteDAO {
 		
 		public void LimparTabela(int id){
 			try{
-				PreparedStatement stmt = this.connection.prepareStatement("DELETE FROM produto where id = ?");
+				PreparedStatement stmt = this.connection.prepareStatement("DELETE FROM cliente where id = ?");
 				stmt.execute();
 				connection.close();
 			} catch (SQLException e){
 				throw new RuntimeException(e);
 			}
 		}
+		
+		
 		 
 		 }
 
