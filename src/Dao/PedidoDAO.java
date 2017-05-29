@@ -62,8 +62,8 @@ public class PedidoDAO {
 
 	
 			
-			stmt.setDouble(3, pedido.getValorTotal());
-			stmt.setDate(4, new java.sql.Date(pedido.getDataPedido().getTime()));
+			stmt.setDouble(1, pedido.getValorTotal());
+			stmt.setDate(2, new java.sql.Date(pedido.getDataPedido().getTime()));
 			
 			stmt.execute();
 			connection.close();
@@ -74,6 +74,25 @@ public class PedidoDAO {
 		}
 
 	}
+	
+	public void alterar(Pedido pedido) {
+
+		try {
+
+		    String sql = "UPDATE contato SET DataPedido = ?, ValorTotal = ? WHERE id = ?";
+		    PreparedStatement stmt = connection.prepareStatement(sql);
+
+		    stmt.setDate(1, new java.sql.Date(pedido.getDataPedido().getTime()));
+		    stmt.setDouble(2, pedido.getValorTotal());
+		    stmt.setLong(3, pedido.getId());
+
+		    stmt.execute();
+		    connection.close();
+
+		} catch (SQLException e) {
+		    throw new RuntimeException(e);
+		}
+	    }
 	
 	public void LimparTabela(int id){
 		try{

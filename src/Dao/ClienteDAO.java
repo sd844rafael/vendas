@@ -75,6 +75,26 @@ public class ClienteDAO {
 			
 			}
 		
+		public void alterar(Cliente cliente) {
+
+			try {
+
+			    String sql = "UPDATE contato SET nome = ?, email = ?, senha = ? WHERE id = ?";
+			    PreparedStatement stmt = connection.prepareStatement(sql);
+
+			    stmt.setString(1, cliente.getNome());
+			    stmt.setString(2, cliente.getEmail());
+			    stmt.setString(3, cliente.getSenha());
+			    stmt.setInt(4, cliente.getId());
+
+			    stmt.execute();
+			    connection.close();
+
+			} catch (SQLException e) {
+			    throw new RuntimeException(e);
+			}
+		    }
+		
 		public void LimparTabela(int id){
 			try{
 				PreparedStatement stmt = this.connection.prepareStatement("DELETE FROM cliente where id = ?");
