@@ -86,11 +86,11 @@ public class ProdutoDAO {
 		    String sql = "UPDATE contato SET titulo= ? , descricao= ? , preco= ? , nomeImagem = ? WHERE id = ?";
 		    PreparedStatement stmt = connection.prepareStatement(sql);
             
-		    stmt.setString(2, produto.getTitulo());
+		    stmt.setString(1, produto.getTitulo());
 		    stmt.setString(2, produto.getDescricao());
-		    stmt.setDouble(2, produto.getPreco());
-		    stmt.setString(2, produto.getNomeImagem());
-		    stmt.setInt(3, produto.getId());
+		    stmt.setDouble(3, produto.getPreco());
+		    stmt.setString(4, produto.getNomeImagem());
+		    stmt.setInt(5, produto.getId());
 
 		    stmt.execute();
 		    connection.close();
